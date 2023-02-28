@@ -202,7 +202,9 @@ create_bootstrap_archive() {
 			rm -f "$link"
 		done < <(find . -type l -print0)
 
-		echo .
+		cat "etc/bash.bashrc"
+		pwd
+
 		zip -r9 "${BOOTSTRAP_TMPDIR}/bootstrap-${1}.zip" ./*
 	)
 
