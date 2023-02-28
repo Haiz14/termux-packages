@@ -193,7 +193,7 @@ extract_debs() {
 # Information about symlinks is stored in file SYMLINKS.txt.
 create_bootstrap_archive() {
 
-	echo $'\n\n\n'"[*] Creating 'bootstrap-${1}.zip'..."
+	echo $'\n\n\n'"[*] Creating 'test-bootstrap-${1}.zip'..."
 	(cd "${BOOTSTRAP_ROOTFS}/${TERMUX_PREFIX}"
 		# Do not store symlinks in bootstrap archive.
 		# Instead, put all information to SYMLINKS.txt
@@ -202,6 +202,7 @@ create_bootstrap_archive() {
 			rm -f "$link"
 		done < <(find . -type l -print0)
 
+		echo .
 		zip -r9 "${BOOTSTRAP_TMPDIR}/bootstrap-${1}.zip" ./*
 	)
 
