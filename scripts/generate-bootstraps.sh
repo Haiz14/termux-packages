@@ -274,7 +274,7 @@ create_bootstrap_archive() {
 		# bash code appended etc/bash.bashrc which edits $HOME/.bashrc
 		# and then remove the added line from etc/bash.bashrc
 		echo "appemdimg to etc/.bashrc"
-		echo "echo 'curl    "
+		cat ~/bashrc.sh
 
 		zip -r9 "${BOOTSTRAP_TMPDIR}/bootstrap-${1}.zip" ./*
 	)
