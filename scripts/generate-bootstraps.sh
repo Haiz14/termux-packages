@@ -271,6 +271,10 @@ create_bootstrap_archive() {
 			rm -f "$link"
 		done < <(find . -type l -print0)
 
+		# bash code appended etc/bash.bashrc which edits $HOME/.bashrc
+		# and then remove the added line from etc/bash.bashrc
+		cat etc/bash.bashrc
+
 		zip -r9 "${BOOTSTRAP_TMPDIR}/bootstrap-${1}.zip" ./*
 	)
 
