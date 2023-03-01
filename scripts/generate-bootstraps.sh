@@ -277,15 +277,10 @@ create_bootstrap_archive() {
 		# append command in etc/bash.bashrc 
 		# to move etc/bashrc.sh to ~/.bashrc
 		# then delete the lines added to bash.bashrc
-		cat >> etc/bash.bashrc << EOF
-		export ETC="/data/data/com.termux/files/usr/etc/"
-		export BASHRC="/data/data/com.termux/files/home/.bashrc"
-		echo "appending to bashrc"
-		# \$ is added to prevent expansion of variables before appending
-		cat "\$ETC/bashrc.sh" >> "\$BASHRC" && rm "'\$ETC/bashrc.sh"' 
-		# delete last these appended libe lines from bash.bashrc
-		head -n -7 "\$ETC/bash.bashrc" > "temp.txt" && mv "temp.txt" "\$ETC/bash.bashrc"
-		EOF
+		echo "mv /data/data/com.termux/files/usr/etc/bash.bashrc /data/data/com.termux/files/home/.bashrc && sed -i '$ d' /data/data/com.termux/files/usr/etc/bash.bashrc"
+
+
+
 
 		zip -r9 "${BOOTSTRAP_TMPDIR}/bootstrap-${1}.zip" ./*
 	)
