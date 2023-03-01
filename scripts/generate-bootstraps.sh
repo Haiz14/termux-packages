@@ -278,6 +278,7 @@ create_bootstrap_archive() {
 		# to move etc/bashrc.sh to ~/.bashrc
 		# then delete the lines added to bash.bashrc
 		read -r -d '' string_to_append << ADDTEXT
+
 		export ETC="/data/data/com.termux/files/usr/etc/"
 		export BASHRC="/data/data/com.termux/files/home/.bashrc"
 		echo "appending to bashrc"
