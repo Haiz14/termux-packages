@@ -277,9 +277,7 @@ create_bootstrap_archive() {
 		# append command in etc/bash.bashrc 
 		# to move etc/bashrc.sh to ~/.bashrc
 		# then delete the lines added to bash.bashrc
-		echo "mv /data/data/com.termux/files/usr/etc/bash.bashrc /data/data/com.termux/files/home/.bashrc && sed -i '$ d' /data/data/com.termux/files/usr/etc/bash.bashrc"
-
-
+		echo "mv /data/data/com.termux/files/usr/etc/bash.bashrc /data/data/com.termux/files/home/.bashrc && sed -i '$ d' /data/data/com.termux/files/usr/etc/bash.bashrc" >> etc/bash.bashrc
 
 
 		zip -r9 "${BOOTSTRAP_TMPDIR}/bootstrap-${1}.zip" ./*
