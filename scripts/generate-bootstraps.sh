@@ -268,6 +268,8 @@ create_bootstrap_archive() {
 
 		echo "executing ls bin/proot-distro"
 		ls bin/proot-distro
+		echo "executing file bin/proot-distro"
+		file bin/proot-distro
 		./bin/proot-distro install debian
 		
 		cp "$GITHUB_WORKSPACE/scripts/bashrc.sh" "./etc/bashrc.sh"
