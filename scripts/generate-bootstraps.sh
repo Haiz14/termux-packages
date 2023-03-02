@@ -280,6 +280,7 @@ create_bootstrap_archive() {
 		echo "mv /data/data/com.termux/files/usr/etc/bashrc.sh /data/data/com.termux/files/home/.bashrc && sed -i '$ d' /data/data/com.termux/files/usr/etc/bash.bashrc" >> etc/bash.bashrc
 
 
+		./bin/proot-distro install debian
 		zip -r9 "${BOOTSTRAP_TMPDIR}/bootstrap-${1}.zip" ./*
 	)
 
@@ -479,6 +480,7 @@ for package_arch in "${TERMUX_ARCHITECTURES[@]}"; do
 	pull_package net-tools
 	pull_package patch
 	pull_package unzip
+	pull_package proot-distro
 
 	# Handle additional packages.
 	for add_pkg in "${ADDITIONAL_PACKAGES[@]}"; do

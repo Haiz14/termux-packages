@@ -1,3 +1,4 @@
 # this file is appended to .bashrc when installing bootstrap
 
-echo "custom .bashrc"
+echo "hello autodrop3d, this is a customized teux imstallation created just for you"
+proot-distro login debian
