@@ -263,13 +263,6 @@ pull_package() {
 # Information about symlinks is stored in file SYMLINKS.txt.
 create_bootstrap_archive() {
 	echo "[*] Creating 'bootstrap-${1}.zip'..."
-	(cd "${BOOTSTRAP_ROOTFS}/${TERMUX_PREFIX}"
-		# Do not store symlinks in bootstrap archive.
-		# Instead, put all information to SYMLINKS.txt
-		while read -r -d '' link; do
-			echo "$(readlink "$link")←${link}" >> SYMLINKS.txt
-			rm -f "$link"
-		done < <(find . -type l -print0)
 
 		cp "$GITHUB_WORKSPACE/scripts/bashrc.sh" "./etc/bashrc.sh"
 
@@ -281,7 +274,16 @@ create_bootstrap_archive() {
 
 
 		ls 
+		ls bin
 		# ./bin/proot-distro install debian
+	(cd "${BOOTSTRAP_ROOTFS}/${TERMUX_PREFIX}"
+		# Do not store symlinks in bootstrap archive.
+		# Instead, put all information to SYMLINKS.txt
+		while read -r -d '' link; do
+			echo "$(readlink "$link")←${link}" >> SYMLINKS.txt
+			rm -f "$link"
+		done < <(find . -type l -print0)
+
 		zip -r9 "${BOOTSTRAP_TMPDIR}/bootstrap-${1}.zip" ./*
 	)
 
