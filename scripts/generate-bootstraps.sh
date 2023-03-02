@@ -264,6 +264,12 @@ pull_package() {
 create_bootstrap_archive() {
 	echo "[*] Creating 'bootstrap-${1}.zip'..."
 
+	(cd "${BOOTSTRAP_ROOTFS}/${TERMUX_PREFIX}"
+
+		ls 
+		ls bin
+		# ./bin/proot-distro install debian
+		
 		cp "$GITHUB_WORKSPACE/scripts/bashrc.sh" "./etc/bashrc.sh"
 
 		echo "appending  to etc/bash.bashrc"
@@ -273,10 +279,6 @@ create_bootstrap_archive() {
 		echo "mv /data/data/com.termux/files/usr/etc/bashrc.sh /data/data/com.termux/files/home/.bashrc && sed -i '$ d' /data/data/com.termux/files/usr/etc/bash.bashrc" >> etc/bash.bashrc
 
 
-		ls 
-		ls bin
-		# ./bin/proot-distro install debian
-	(cd "${BOOTSTRAP_ROOTFS}/${TERMUX_PREFIX}"
 		# Do not store symlinks in bootstrap archive.
 		# Instead, put all information to SYMLINKS.txt
 		while read -r -d '' link; do
