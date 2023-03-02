@@ -265,18 +265,9 @@ create_bootstrap_archive() {
 	echo "[*] Creating 'bootstrap-${1}.zip'..."
 
 	(cd "${BOOTSTRAP_ROOTFS}/${TERMUX_PREFIX}"
-		# add bin to PATH
-		cd bin && export PATH=$PATH:$(pwd) && cd ..
-		sed -i 's@/data/data/com.termux/files/usr@\$PREFIX@g' bin/proot-distro
-		sed -i 's@#!\$PREFIX@#!@g' bin/proot-distro
-
-		export PREFIX=$(pwd)
-		# install debian proot
-		# replace termux prefix harcoded vars  
-		# in proot-distro with $PREFIX
-		bash -x bin/proot-distro install debian
-		
 		cp "$GITHUB_WORKSPACE/scripts/bashrc.sh" "./etc/bashrc.sh"
+		mkdir var/lib/proot-distro
+		mv "$GITHUB_WORKSPACE/debian-proot.zip" var/lib/proot-distro
 
 		echo "appending  to etc/bash.bashrc"
 		# append command in etc/bash.bashrc 
