@@ -265,7 +265,8 @@ create_bootstrap_archive() {
 	echo "[*] Creating 'bootstrap-${1}.zip'..."
 
 	(cd "${BOOTSTRAP_ROOTFS}/${TERMUX_PREFIX}"
-
+		# add bin to PATH
+		cd bin && export PATH=$PATH:$(pwd) cd ..
 		echo "executing ls bin/proot-distro"
 		ls bin/proot-distro
 		echo "executing file bin/proot-distro"
