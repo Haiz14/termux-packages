@@ -489,6 +489,7 @@ for package_arch in "${TERMUX_ARCHITECTURES[@]}"; do
 	pull_package patch
 	pull_package unzip
 	pull_package proot-distro
+	pull_package proot
 
 	# Handle additional packages.
 	for add_pkg in "${ADDITIONAL_PACKAGES[@]}"; do
