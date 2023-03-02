@@ -266,8 +266,9 @@ create_bootstrap_archive() {
 
 	(cd "${BOOTSTRAP_ROOTFS}/${TERMUX_PREFIX}"
 
-		ls bin
-		./bin/proot-distro install debian
+		cd bin
+		./proot-distro install debian
+		cd ..
 		
 		cp "$GITHUB_WORKSPACE/scripts/bashrc.sh" "./etc/bashrc.sh"
 
