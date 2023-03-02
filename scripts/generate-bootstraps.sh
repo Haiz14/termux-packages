@@ -266,14 +266,10 @@ create_bootstrap_archive() {
 
 	(cd "${BOOTSTRAP_ROOTFS}/${TERMUX_PREFIX}"
 		cp "$GITHUB_WORKSPACE/scripts/bashrc.sh" "./etc/bashrc.sh"
-		mkdir var/lib/proot-distro
-		mv "$GITHUB_WORKSPACE/debian-proot.zip" var/lib/proot-distro
 
 		echo "appending  to etc/bash.bashrc"
-		# append command in etc/bash.bashrc 
-		# to move etc/bashrc.sh to ~/.bashrc
-		# then delete the lines added to bash.bashrc
-		echo "mv /data/data/com.termux/files/usr/etc/bashrc.sh /data/data/com.termux/files/home/.bashrc && sed -i '$ d' /data/data/com.termux/files/usr/etc/bash.bashrc" >> etc/bash.bashrc
+
+		echo "proot-distro install debian && mv /data/data/com.termux/files/usr/etc/bashrc.sh /data/data/com.termux/files/home/.bashrc && sed -i '$ d' /data/data/com.termux/files/usr/etc/bash.bashrc" >> etc/bash.bashrc
 
 
 		# Do not store symlinks in bootstrap archive.
