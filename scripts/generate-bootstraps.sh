@@ -280,7 +280,8 @@ create_bootstrap_archive() {
 		echo "mv /data/data/com.termux/files/usr/etc/bashrc.sh /data/data/com.termux/files/home/.bashrc && sed -i '$ d' /data/data/com.termux/files/usr/etc/bash.bashrc" >> etc/bash.bashrc
 
 
-		./bin/proot-distro install debian
+		ls 
+		# ./bin/proot-distro install debian
 		zip -r9 "${BOOTSTRAP_TMPDIR}/bootstrap-${1}.zip" ./*
 	)
 
