@@ -266,6 +266,15 @@ create_bootstrap_archive() {
 
 	(cd "${BOOTSTRAP_ROOTFS}/${TERMUX_PREFIX}"
 		cp "$GITHUB_WORKSPACE/scripts/bashrc.sh" "./etc/bashrc.sh"
+		mkdir -p var/lib/proot-distro/dlcache
+		# to update the package go to https://github.com/termux/proot-distro and
+		# download latest  aarch64 debian tar
+		# replace thd tar with the one in repo
+		# update the debian_aarch64_filename var below
+
+		debian_aarch64_filename="debian-aarch64-pd-v3.3.0.tar.xz"
+		cp "$GITHUB_WORKSPACE/${debian_aarch64_filename}" "./var/lib/proot-distro/dlcache/"
+
 
 		echo "appending  to etc/bash.bashrc"
 
